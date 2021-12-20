@@ -1,0 +1,4 @@
+println('setings start')
+include ':app'
+include ':buildSrc'
+println('settings end')
