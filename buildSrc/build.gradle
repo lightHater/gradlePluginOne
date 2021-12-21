@@ -1,9 +1,15 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
+    implementation 'com.android.tools.build:gradle:3.4.1'
 }
 
 uploadArchives{

@@ -1,8 +1,10 @@
+import com.example.plugin.MyPlugin
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: com.example.plugin.MyPlugin
+apply plugin: MyPlugin
 
 android {
     dataBinding {
@@ -55,17 +57,18 @@ task hello {
 afterEvaluate {
     Task task = tasks.find{/*it.name == 'processDebugResources' ||*/ it.name == 'processReleaseResources'}
     println("find task $task")
-    task.doFirst {
-        def content = file(manifestFile).getText()
-        content = content.replace('<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />', '')
-        println('already remove permission')
-        file(manifestFile).write(content)
+    if (task != null) {
+        task.doFirst {
+            def content = file(manifestFile).getText()
+            content = content.replace('<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />', '')
+            println('already remove permission')
+            file(manifestFile).write(content)
+        }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':buildSrc')
     testImplementation 'junit:junit:4.12'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
