@@ -1,3 +1,4 @@
 println('setings start')
 include ':app'
+include ':myplugin'
 println('settings end')

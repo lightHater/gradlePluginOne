@@ -12,7 +12,7 @@ dependencies {
     implementation 'com.android.tools.build:gradle:3.4.1'
 }
 
-uploadArchives{
+uploadArchives {
     repositories.mavenDeployer {
         //本地仓库路径，以放到项目根目录下的 repo 的文件夹为例
         repository(url: uri('../repo'))
