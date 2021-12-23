@@ -1,5 +1,8 @@
 apply plugin: 'groovy'
-apply plugin: 'maven'
+//apply plugin: 'maven'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.zilongyang'
 
 repositories {
     google()
@@ -12,6 +15,7 @@ dependencies {
     implementation 'com.android.tools.build:gradle:3.4.1'
 }
 
+/*
 uploadArchives {
     repositories.mavenDeployer {
         //本地仓库路径，以放到项目根目录下的 repo 的文件夹为例
@@ -23,4 +27,4 @@ uploadArchives {
         //插件版本号
         pom.version = '1.0.0'
     }
-}
+}*/
