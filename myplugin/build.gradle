@@ -1,6 +1,7 @@
 apply plugin: 'groovy'
 //apply plugin: 'maven'
-apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.github.dcendents.android-maven'//将代码作为依赖库上传到github上
+apply plugin: 'java-gradle-plugin' //gradlePlugin
 
 group='com.github.zilongyang'
 
@@ -16,6 +17,7 @@ dependencies {
 }
 
 /*
+本地需要
 uploadArchives {
     repositories.mavenDeployer {
         //本地仓库路径，以放到项目根目录下的 repo 的文件夹为例
@@ -28,3 +30,15 @@ uploadArchives {
         pom.version = '1.0.0'
     }
 }*/
+//通过插件指定plugin的id和class
+//这种方式和resources指定的方式都能用于本地上传和远程上传
+gradlePlugin {
+    plugins {
+        modularPlugin {
+            // Plugin id.
+            id = 'MyPlugin'
+            // Plugin implementation.
+            implementationClass = 'com.example.plugin.MyPlugin'
+        }
+    }
+}
